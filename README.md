@@ -1,1 +1,1 @@
-# AVR_BCD
+# Simple BCD counter using Atmega32
