@@ -67,11 +67,11 @@ Disassembly of section .text:
   68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 0000006c <bcdCounter>:
- *  Author: modern
  */ 
 
 #include "IOMACRO.h"
-void bcdCounter(volatile uint8_t *port,uint8_t limit )
+void bcdCounter(volatile uint8_t *port,uint8_t limit )//port passed as pointer 
+//must configure reg before using method
 {
   6c:	fc 01       	movw	r30, r24
 	for (int i=0;i<=limit;i++)
@@ -96,10 +96,10 @@ void bcdCounter(volatile uint8_t *port,uint8_t limit )
   82:	e1 f7       	brne	.-8      	; 0x7c <bcdCounter+0x10>
   84:	00 c0       	rjmp	.+0      	; 0x86 <bcdCounter+0x1a>
   86:	00 00       	nop
- */ 
 
 #include "IOMACRO.h"
-void bcdCounter(volatile uint8_t *port,uint8_t limit )
+void bcdCounter(volatile uint8_t *port,uint8_t limit )//port passed as pointer 
+//must configure reg before using method
 {
 	for (int i=0;i<=limit;i++)
   88:	2f 5f       	subi	r18, 0xFF	; 255
@@ -119,13 +119,13 @@ void bcdCounter(volatile uint8_t *port,uint8_t limit )
 
 int main(void)
 {
-	DDRD=0xff;
+	DDRD=0xff;//output
   94:	8f ef       	ldi	r24, 0xFF	; 255
   96:	81 bb       	out	0x11, r24	; 17
     /* Replace with your application code */
     while (1) 
     {
-		bcdCounter(&PORTD,15 );
+		bcdCounter(&PORTD,15 );//pass address of port 
   98:	6f e0       	ldi	r22, 0x0F	; 15
   9a:	82 e3       	ldi	r24, 0x32	; 50
   9c:	90 e0       	ldi	r25, 0x00	; 0

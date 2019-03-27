@@ -10,11 +10,11 @@
 
 int main(void)
 {
-	DDRD=0xff;
+	DDRD=0xff;//output
     /* Replace with your application code */
     while (1) 
     {
-		bcdCounter(&PORTD,15 );
+		bcdCounter(&PORTD,15 );//pass address of port 
 		
 		
     }
